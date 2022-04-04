@@ -6,6 +6,9 @@ public class ChargedInteractableGroup : InteractableGroup
 {
    public int ChargeRequired;
 
+   [TextArea]
+   public string DefaultMessage;
+
    public override void ActionOnInteraction()
    {
       if (EnableOnCall)
@@ -22,6 +25,10 @@ public class ChargedInteractableGroup : InteractableGroup
       }
       else
       {
+         if(DefaultMessage != string.Empty)
+         {
+            TextPopupManager.Instance.QueueText(DefaultMessage);
+         }
          TriggerGroupedActions();
       }
    }

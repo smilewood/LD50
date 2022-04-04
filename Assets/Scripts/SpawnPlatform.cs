@@ -31,5 +31,10 @@ public class SpawnPlatform : MonoBehaviour
       MainCamera.transform.parent = newDrone.transform;
       MainCamera.transform.localPosition = new Vector3(0, 0, -10);
       newDrone.name = "Drone" + ++droneCount;
+      if(droneCount > 1)
+      {
+         //Dont show this message when spawnning the forst drone.
+         TextPopupManager.Instance.QueueText(string.Format("Drone power expired. Launching new drone.\n\nDrone number {0} launch complete.", droneCount));
+      }
    }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1001572311900027555}
   - component: {fileID: 1001572311900027553}
   - component: {fileID: 1001572311900027554}
+  - component: {fileID: 4148227644253968281}
   m_Layer: 0
   m_Name: BatteryFill
   m_TagString: Untagged
@@ -96,6 +97,85 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155b96c8ca3ab52449e6297285aec1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinLightPercentage: 0.25
+--- !u!114 &4148227644253968281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001572311900027556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.75
+  m_Color: {r: 1, g: 0.71237, b: 0, a: 1}
+  m_Intensity: 1
+  m_LightVolumeIntensity: 1
+  m_LightVolumeIntensityEnabled: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowIntensityEnabled: 0
+  m_ShadowIntensity: 0.75
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_Vertices:
+  - position: {x: 0.9985302, y: 0.9985302, z: 0}
+    color: {r: 0.70710677, g: 0.70710677, b: 0, a: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: 0.9985302, y: 0.9985302, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 1}
+    uv: {x: 0, y: 0}
+  - position: {x: -0.9985302, y: 0.9985302, z: 0}
+    color: {r: -0.70710677, g: 0.70710677, b: 0, a: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: -0.9985302, y: 0.9985302, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 1}
+    uv: {x: 0, y: 0}
+  - position: {x: -0.99853003, y: -0.9985304, z: 0}
+    color: {r: -0.70710665, g: -0.7071069, b: 0, a: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: -0.99853003, y: -0.9985304, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 1}
+    uv: {x: 0, y: 0}
+  - position: {x: 0.99853003, y: -0.9985304, z: 0}
+    color: {r: 0.70710665, g: -0.7071069, b: 0, a: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: 0.99853003, y: -0.9985304, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 1}
+    uv: {x: 0, y: 0}
+  - position: {x: 0, y: 0, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 1}
+    uv: {x: 0, y: 0}
+  m_Triangles: 030001000800020000000100030002000100050003000800040002000300050004000300070005000800060004000500070006000500010007000800000006000700010000000700
+  m_LocalBounds:
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &1001572311968596634
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,8 +221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee0d9e1720f82045926f9ada22dab1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorMap: {fileID: 0}
   droneAnimation: {fileID: 1001572313372173125}
+  thisBattery: {fileID: 1001572311900027554}
 --- !u!1 &1001572313372173126
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,6 +234,7 @@ GameObject:
   - component: {fileID: 1001572313372173123}
   - component: {fileID: 1001572313372173124}
   - component: {fileID: 1001572313372173125}
+  - component: {fileID: 4049761142134271857}
   m_Layer: 0
   m_Name: DroneImage
   m_TagString: Untagged
@@ -195,7 +276,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -246,3 +327,44 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4049761142134271857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001572313372173126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.13946258, y: -0.22058356, z: 0}
+  - {x: -0.17876647, y: -0.17425969, z: 0}
+  - {x: -0.23585156, y: -0.13520151, z: 0}
+  - {x: -0.22984254, y: 0.10816127, z: 0}
+  - {x: -0.18177095, y: 0.17425969, z: 0}
+  - {x: -0.1184313, y: 0.23560584, z: 0}
+  - {x: -0.076614246, y: 0.28542542, z: 0}
+  - {x: 0.0015022606, y: 0.3034523, z: 0}
+  - {x: 0.12769036, y: 0.24937168, z: 0}
+  - {x: 0.18152528, y: 0.17852075, z: 0}
+  - {x: 0.20580679, y: 0.13820596, z: 0}
+  - {x: 0.22383362, y: 0.06309405, z: 0}
+  - {x: 0.22383355, y: -0.009013303, z: 0}
+  - {x: 0.22683814, y: -0.13520151, z: 0}
+  - {x: 0.16073965, y: -0.19829556, z: 0}
+  - {x: 0.10040432, y: -0.2476238, z: 0}
+  - {x: 0.07661417, y: -0.276412, z: 0}
+  - {x: 0.004506707, y: -0.30345228, z: 0}
+  - {x: -0.08262318, y: -0.27040306, z: 0}
+  m_ShapePathHash: -1410648624
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 46280

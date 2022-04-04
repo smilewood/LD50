@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public abstract class Unlockable : MonoBehaviour
 {
@@ -28,13 +29,19 @@ public class DoorOpener : Unlockable
    }
 
    public Sprite DoorLockedSprite;
+   public Color LockedLightColor;
    public Sprite DoorClosedSprite;
+   public Color ClosedLightColor;
    public Sprite DoorOpenSprite;
+   public Color OpenLightColor;
+
+   public Light2D statusLight;
 
    void Start()
    {
       doorSprite = this.GetComponent<SpriteRenderer>();
       doorSprite.sprite = IsOpen ? DoorOpenSprite : IsLocked ? DoorLockedSprite : DoorClosedSprite;
+      statusLight.color = IsOpen ? OpenLightColor : IsLocked ? LockedLightColor : ClosedLightColor;
    }
 
    public bool OpenDoor()
@@ -44,6 +51,7 @@ public class DoorOpener : Unlockable
          Debug.Log("opening door");
          IsOpen = true;
          doorSprite.sprite = DoorOpenSprite;
+         statusLight.color = OpenLightColor;
          return true;
       }
       else
@@ -57,6 +65,7 @@ public class DoorOpener : Unlockable
    {
       IsOpen = false;
       doorSprite.sprite = DoorClosedSprite;
+      statusLight.color = ClosedLightColor;
    }
 
    public override void Lock()
@@ -64,6 +73,7 @@ public class DoorOpener : Unlockable
       IsLocked = true;
       IsOpen = false;
       doorSprite.sprite = DoorLockedSprite;
+      statusLight.color = LockedLightColor;
    }
 
    public override void Unlock()
@@ -72,6 +82,7 @@ public class DoorOpener : Unlockable
       {
          IsLocked = false;
          doorSprite.sprite = DoorClosedSprite;
+         statusLight.color = ClosedLightColor;
       }
    }
 }

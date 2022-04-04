@@ -7,6 +7,7 @@ public class InteractableGroup : InteractableEvent
    public List<InteractableEvent> EventGroup;
    public InteractableGroup NextGroup;
 
+
    protected bool EnableOnCall = false;
 
    private void EnableNextTime()

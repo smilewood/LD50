@@ -5,6 +5,10 @@ using UnityEngine;
 public class FlagLockedGroup : InteractableGroup
 {
    public string FlagToCheck;
+
+   [TextArea]
+   public string DefaultMessage;
+
    public override void ActionOnInteraction()
    {
       if (EnableOnCall)
@@ -15,11 +19,16 @@ public class FlagLockedGroup : InteractableGroup
 
       if (FlagInteractable.Flags.Contains(FlagToCheck))
       {
+         this.Active = false;
          NextGroup.SetActive();
          NextGroup.ActionOnInteraction();
       }
       else
       {
+         if (DefaultMessage != string.Empty)
+         {
+            TextPopupManager.Instance.QueueText(DefaultMessage);
+         }
          TriggerGroupedActions();
       }
 

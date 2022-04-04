@@ -1,9 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.Animations;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 public class DroneController : MonoBehaviour
@@ -21,6 +18,7 @@ public class DroneController : MonoBehaviour
    }
    private Tilemap floorMap;
    public Animator droneAnimation;
+   public BatteryUI thisBattery;
 
    // Start is called before the first frame update
    void Start()
@@ -33,6 +31,15 @@ public class DroneController : MonoBehaviour
    // Update is called once per frame
    void Update()
    {
+      if (MenuFunctions.Instance.IsMenuOpen("Start"))
+      {
+         return;
+      }
+
+      if (Input.GetButtonDown("ResetDrone"))
+      {
+         ResetDrone();
+      }
       // The drone can move, so do so
       Vector3 delta = new Vector3((Input.GetButtonDown("Left") ? -1 : (Input.GetButtonDown("Right") ? 1 : 0)), (Input.GetButtonDown("Down") ? -1 : (Input.GetButtonDown("Up") ? 1 : 0)));
       if (delta != Vector3.zero)
@@ -63,16 +70,12 @@ public class DroneController : MonoBehaviour
          {
             Battery -= 1;
             //Update UI for battery drain
-            BatteryUI.BatteryPercentageChanged.Invoke(Battery / 100f);
+            thisBattery.ChangeBatteryPercent(Battery / 100f);
 
             //When the battery is empty kill the drone
             if (Battery <= 0)
             {
-               Debug.LogError("No more power");
-               droneAnimation.SetTrigger("KillDrone");
-               CurrentDrone = null;
-               SpawnPlatform.ActiveDroneExpired.Invoke();
-               this.enabled = false;
+               ResetDrone();
             }
 
             //TODO: Animate the movement, maybe have it face a direction at least
@@ -80,6 +83,14 @@ public class DroneController : MonoBehaviour
             this.transform.position = newWorldPosition;
          }
       }
+   }
+
+   public void ResetDrone()
+   {
+      droneAnimation.SetTrigger("KillDrone");
+      CurrentDrone = null;
+      SpawnPlatform.ActiveDroneExpired.Invoke();
+      this.enabled = false;
    }
 
    public void Recharge()
